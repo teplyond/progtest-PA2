@@ -25,8 +25,10 @@ FileSize()
 AddVersion()
   metoda archivuje aktuální obsah souboru a aktuální pozici v souboru (vytvoří verzi). Tato verze bude uložena v instanci CFile.
 UndoVersion()
-  metoda vrátí obsah souboru a aktuální pozici v souboru do stavu, ve kterém byly při odpovídajícím předchozím volání AddVersion. Vracet se k předchozím verzím lze vícenásobně, dokud existují předchozí archivované verze. Volání UndoVersion vrátí true pro úspěch, false pro neúspěch (neexistuje předchozí verze).
-<hr>
+  metoda vrátí obsah souboru a aktuální pozici v souboru do stavu, ve kterém byly při odpovídajícím předchozím volání AddVersion. 
+  Vracet se k předchozím verzím lze vícenásobně, dokud existují předchozí archivované verze. Volání UndoVersion vrátí true pro úspěch, false pro neúspěch (neexistuje předchozí verze).
+_____________________________________________________________________
+
 Odevzdávejte soubor, který obsahuje implementovanou třídu CFile. Třída musí splňovat veřejné rozhraní podle ukázky - pokud Vámi odevzdané řešení nebude obsahovat popsané rozhraní, dojde k chybě při kompilaci. Do třídy si ale můžete doplnit další metody (veřejné nebo i privátní) a členské proměnné. Odevzdávaný soubor musí obsahovat jak deklaraci třídy (popis rozhraní) tak i definice metod, konstruktoru a destruktoru. Je jedno, zda jsou metody implementované inline nebo odděleně. Odevzdávaný soubor nesmí obsahovat vkládání hlavičkových souborů a funkci main (funkce main a vkládání hlavičkových souborů může zůstat, ale pouze obalené direktivami podmíněného překladu jako v ukázce níže).
 
 Třída je testovaná v omezeném prostředí, kde je limitovaná dostupná paměť (dostačuje k uložení seznamu) a je omezena dobou běhu. Pro řešení zcela záměrně nemáte k dispozici STL ani std::string. Úloha má procvičit pochopení hluboké a mělké kopie. S využitím STL by tento cíl nebyl naplněn.
