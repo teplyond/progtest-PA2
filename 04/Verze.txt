@@ -2,9 +2,12 @@
 -------------------------------
 Úkolem je navrhnout a realizovat třídu CFile, která bude simulovat binární soubor.
 
-Požadovaná třída bude splňovat rozhraní podle ukázky níže. Požadavkem jsou čtecí a zápisové operace, nastavení pozice ukazatele a zkrácení souboru. Dále požadujeme, aby si třída dokázala pamatovat verze souboru. V rozhraní existuje metoda, která archivuje stávající obsah souboru. Následně se půjde k této verzi souboru vrátit. Takových verzí obsahu půjde vytvořit mnoho (implicitním limitem je pouze velikost dostupné paměti), k libovolné starší verzi se půjde vrátit (principem "undo"). Předpokládá se, že ukládaná data zapisujete do operační paměti (ne na disk, třída pouze simuluje chování souboru).
+Požadovaná třída bude splňovat rozhraní podle ukázky níže. Požadavkem jsou čtecí a zápisové operace, nastavení pozice ukazatele a zkrácení souboru. Dále požadujeme, aby si třída dokázala pamatovat verze souboru. 
+V rozhraní existuje metoda, která archivuje stávající obsah souboru. Následně se půjde k této verzi souboru vrátit. Takových verzí obsahu půjde vytvořit mnoho (implicitním limitem je pouze velikost dostupné paměti), 
+k libovolné starší verzi se půjde vrátit (principem "undo"). Předpokládá se, že ukládaná data zapisujete do operační paměti (ne na disk, třída pouze simuluje chování souboru).
 
-Z důvodů zálohování chceme mít možnost vytvářet kopie existujícího instance CFile. Kopie budou vznikat jednak kopírujícím konstruktorem a dále i operátorem =. Vzniklé kopie musí být identické nezávislé objekty, tedy operace s jedním z nich nemůže ovlivnit obsah druhého. Na druhou stranu se dá počítat s tím, že změn mezi kopiemi nebude mnoho, tedy některá data mohou kopie sdílet v zájmu šetření místa. Kopírováním vzniká identický objekt, tedy přenesou se i uložené verze obsahu.
+Z důvodů zálohování chceme mít možnost vytvářet kopie existujícího instance CFile. Kopie budou vznikat jednak kopírujícím konstruktorem a dále i operátorem =. Vzniklé kopie musí být identické nezávislé objekty, tedy operace s jedním z nich nemůže ovlivnit obsah druhého.
+Na druhou stranu se dá počítat s tím, že změn mezi kopiemi nebude mnoho, tedy některá data mohou kopie sdílet v zájmu šetření místa. Kopírováním vzniká identický objekt, tedy přenesou se i uložené verze obsahu.
 
 Požadované rozhraní třídy:
 
@@ -36,7 +39,7 @@ Je jedno, zda jsou metody implementované inline nebo odděleně. Odevzdávaný 
 Třída je testovaná v omezeném prostředí, kde je limitovaná dostupná paměť (dostačuje k uložení seznamu) a je omezena dobou běhu. Pro řešení zcela záměrně nemáte k dispozici STL ani std::string. Úloha má procvičit pochopení hluboké a mělké kopie. 
 S využitím STL by tento cíl nebyl naplněn.
 
-Hodnocení je rozděleno mezi povinné, nepovinné a bonusové testy. Pro zvládnutí povinných testů stačí implementace základní verze kopírování obsahu. Pro zvládnutí dalších testů je potřeba efektivně sdílet části dat, aby vznikající kopie zabíraly rozumný objem paměti. Můžete předpokládat,
-že změny mezi verzemi a změny mezi kopiemi instancí jsou malé. Tedy neměnné části lze sdílet s využitím technik počítaných referencí a copy-on-write.
+Hodnocení je rozděleno mezi povinné, nepovinné a bonusové testy. Pro zvládnutí povinných testů stačí implementace základní verze kopírování obsahu. Pro zvládnutí dalších testů je potřeba efektivně sdílet části dat, 
+aby vznikající kopie zabíraly rozumný objem paměti. Můžete předpokládat,že změny mezi verzemi a změny mezi kopiemi instancí jsou malé. Tedy neměnné části lze sdílet s využitím technik počítaných referencí a copy-on-write.
 
 Požadované veřejné rozhraní třídy a ukázka použití je v přiloženém archivu.
