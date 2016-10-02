@@ -1,4 +1,5 @@
  ..:: Supermarket ::..
+ -------------------------------
 Úkolem je realizovat třídy, které implementují správu skladu v supermarketu.
 
 Předpokládáme sklad zboží v supermarketu. V tomto skladu se nachází značné množství zboží. Zboží je jednoznačně identifikováno
