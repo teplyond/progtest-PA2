@@ -1,0 +1,55 @@
+ ..:: Hledání cest ::..
+ -------------------------------
+Úkolem je realizovat šablonu tøídy, která dokáže vyhledávat cestu mezi dvojicí zadaných míst.
+
+Pøedpokládáme mapu, ve které se nacházejí místa (uzly) a spojnice mezi uzly (hrany). Pod místem si lze pøedstavit mìsta na mapì,
+adresy poèítaèù v síti, ... Hrany pak jsou silnice/železnice (pro mìsta), pøípadnì datová spojení (pro poèítaèe v síti). 
+Naše tøída CRoute si bude pamatovat takovou mapu. Protože o uzlech ani hranách nebude nic pøedpokládat, bude tøída realizovaná 
+jako šablona a typ uzlu a typ hrany budou generické parametry této tøídy.
+
+Tøída bude mít metodu pro pøidávání hran a metodu pro vyhledávání. Kompletní rozhraní CRoute bude obsahovat:
+
+implicitní konstruktor
+	vytvoøí prázdnou instanci CRoute,
+metoda Add(u1, u2, e)
+	metoda pøidá hranu do CRoute. Hrana spojuje dvojici uzlù u1 a u2. Parametr e udává parametry hrany. 
+	Pøidávaná hrana je obousmìrná.
+metoda Find ( u1, u2[, f] )
+	Metoda nalezne spojení (cestu) mezi dvojicí zadaných uzlù u1 a u2. Výsledkem je seznam (list) obsahující uzly 
+	tvoøící cestu mezi u1 a u2. Prvním prvkem seznamu bude u1, posledním u2. Spojení mezi uzly nemusí existovat 
+	(pak metoda vyhodí výjimku NoRouteException), pøípadnì spojení mùže existovat více. Pokud existuje spojení více,
+	bude výsledkem takové spojení, které má nejmenší délku (co nejménì mezilehlých uzlù). Pokud existuje více
+	rùzných spojení s minimální délkou, pak mùže být výsledkem libovolné z nich.
+
+	Nepovinným tøetím parametrem f je filtr na možné použité hrany. Pokud je vynechán, uvažujeme všechny zadané hrany. 
+	Pokud je zadán, pak se jedná o funkci/funktor/lambda výraz, který bude aplikován na vlastnost hrany. 
+	Hrana bude uvažovaná pouze pokud ji filtr akceptuje (vrátí true). Tímto pùjde jednoduše volit vlastnosti 
+	nalezené cesty, napø. budeme chtít pouze cesty, kde hrany umožní zadanou minimální rychlost.
+
+Generický parametr _T popisuje uzel. Pro uzly máte garantované následující operace:
+	- kopírující konstruktor,
+	- operátor =
+	- relaèní operátory (==, !=, < <=, > a >=),
+	- destruktor,
+	- operátor pro výpis (<<).
+	- Další operace s datovým typem nejsou zaruèené (mohou, ale nemusí existovat).
+
+Generický parametr _E popisuje hranu. Pro hrany máte garantované následující operace:
+	- kopírující konstruktor,
+	- operátor =
+	- destruktor.
+	- Další operace s datovým typem nejsou zaruèené (mohou, ale nemusí existovat).
+
+_____________________________________________________________________
+Odevzdávejte zdrojový kód s implementací šablony tøídy CRoute. Za základ implementace použijte pøiložený 
+zdrojový kód. Pokud v kódu ponecháte bloky podmínìného pøekladu, lze takový zdrojový kód lokálnì testovat 
+a zároveò jej odevzdávat Progtestu.
+
+Hodnocení je rozdìleno na povinnou a nepovinnou èást. V povinné èásti se testují mapy s malým množstvím uzlù.
+Nepovinný test testuje velké mapy, které vyžadují použití odpovídajících datových struktur. Nezvládnutí nepovinného
+testu znamená citelnou bodovou ztrátu.
+
+Pro hledání cesty se nejlépe hodí algoritmus BFS (prohledávání do šíøky). Pro inspiraci si pøipomeòte prosemináø PA1,
+ve kterém jsme probírali datové struktury, pøíklad s cestou v bludišti.
+
+Zdrojový kód s ukázkou práce šablony naleznete v pøiloženém archivu.
